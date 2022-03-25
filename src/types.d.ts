@@ -1,0 +1,11 @@
+declare global {
+  interface Stamp {
+      id: string;
+      title: string;
+      description: string;
+      image: string;
+      price: number;
+  }
+}
+
+export {};
