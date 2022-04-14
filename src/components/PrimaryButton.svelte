@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let shadow: string = "none";
+  export let shadow = "none";
 </script>
 
 <button class="btn" style:box-shadow={shadow}>

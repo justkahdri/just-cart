@@ -19,7 +19,7 @@
 </script>
 
 <script lang="ts">
-  import Card from '../components/card.svelte';
+  import Card from '../components/Card.svelte';
   import PrimaryButton from "../components/PrimaryButton.svelte";
 
   export let products: Stamp[] = [];
