@@ -4,10 +4,7 @@ import Footer from "../components/Footer.svelte";
 
 <svelte:head>
   <title>Estampitiency</title>
-  <description>
-    E-commerce de estampitas.
-    Artwork by @emalozada25
-  </description>
+  <meta name="description" content="E-commerce de estampitas. Hecho con SvelteKit 💖. Artwork by @emalozada25"/>
 </svelte:head>
 
 <header>Estampitiency</header>
