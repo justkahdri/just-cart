@@ -2,8 +2,8 @@
   import type { Load } from "@sveltejs/kit";
   
   export const load: Load = async ({ fetch }) => {
-    let res = await fetch('./api/estampitancy');
-    
+    let res = await fetch("./api/estampitancy");
+  
     if (res.ok) {
       return {
         props: {
@@ -15,11 +15,11 @@
       status: res.status,
       error: new Error()
     };
-  }
+  };
 </script>
 
 <script lang="ts">
-  import Card from '../components/Card.svelte';
+  import Card from "../components/Card.svelte";
   import PrimaryButton from "../components/PrimaryButton.svelte";
 
   export let products: Stamp[] = [];
