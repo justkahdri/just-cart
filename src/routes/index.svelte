@@ -22,7 +22,7 @@
   import Card from "../components/Card.svelte";
   import PrimaryButton from "../components/PrimaryButton.svelte";
 
-  export let products: Stamp[] = [];
+  export let products: StampT[] = [];
 </script>
 
 <section>

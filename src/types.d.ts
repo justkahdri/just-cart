@@ -1,10 +1,13 @@
 declare global {
-  interface Stamp {
-      id: string;
-      title: string;
-      description: string;
-      image: string;
-      price: number;
+  interface ProductT {
+    id: string;
+    price: number;
+  }
+
+  interface StampT extends ProductT {
+    title: string;
+    description: string;
+    image: string;
   }
 }
 
