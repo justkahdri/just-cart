@@ -31,7 +31,7 @@
       .reduce((total, product) => product.getProductTotal() + total, 0);
 
     return total;
-  }
+  };
 </script>
 
 <section>
@@ -41,7 +41,7 @@
 </section>
 <aside>
   <PrimaryButton shadow="0 0 10px rgba(0,0,0,0.5)" onClick={() => console.log($cart)}>
-    {$cart.size} productos (total: ${getTotal()})
+    {$cart.size} {$cart.size === 1 ? "producto" : "productos"} (total: ${getTotal()})
   </PrimaryButton>
 </aside>
 

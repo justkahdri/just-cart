@@ -1,19 +1,18 @@
 <script lang="ts">
   import cart from "@cart";
   import type Product from "@model/product";
-import { get } from "svelte/store";
   import PrimaryButton from "./PrimaryButton.svelte";
 
   export let stamp: Product;
-  const {image, title, description, id} = stamp;
+  const { image, title, description, id } = stamp;
 
   const addThisProduct = () => {
-    cart.addProduct(stamp.getPricing())
-  }
+    cart.addProduct(stamp.getPricing());
+  };
 
   const removeThisProduct = () => {
-    cart.removeProduct(stamp.getPricing())
-  }
+    cart.removeProduct(stamp.getPricing());
+  };
 </script>
 
 <article class="card">
