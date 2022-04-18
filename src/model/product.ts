@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
 
 class Product {
-  private id: string;
+  public id: string;
   public title: string;
   public description: string;
   public image: string;
