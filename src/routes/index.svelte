@@ -2,8 +2,8 @@
   import type { Load } from "@sveltejs/kit";
   
   export const load: Load = async ({ fetch }) => {
-    let res = await fetch('./api/estampitancy');
-    
+    let res = await fetch("./api/estampitancy");
+  
     if (res.ok) {
       return {
         props: {
@@ -15,27 +15,37 @@
       status: res.status,
       error: new Error()
     };
-  }
+  };
 </script>
 
 <script lang="ts">
-  import Card from '../components/Card.svelte';
-  import PrimaryButton from "../components/PrimaryButton.svelte";
+  import cart from "@cart";
+  import Product from "@model/product";
+  import Card from "@components/Card.svelte";
+  import PrimaryButton from "@components/PrimaryButton.svelte";
 
-  export let products: Stamp[] = [];
+  export let products: StampT[] = [];
+
+  $: getTotal = () => {
+    const total = Array.from($cart.values())
+      .reduce((total, product) => product.getProductTotal() + total, 0);
+
+    return total;
+  };
 </script>
 
 <section>
-  {#each products as product}
-    <Card {...product} />
+  {#each products as {title, description, image, price}}
+    <Card stamp={new Product(title, description, image, price)} />
   {/each}
 </section>
 <aside>
-  <PrimaryButton shadow="0 0 10px rgba(0,0,0,0.5)">3 productos (total: $12)</PrimaryButton>
+  <PrimaryButton shadow="0 0 10px rgba(0,0,0,0.5)" onClick={() => console.log($cart)}>
+    {$cart.size} {$cart.size === 1 ? "producto" : "productos"} (total: ${getTotal()})
+  </PrimaryButton>
 </aside>
 
 <style>
-  /* Blocks */
   section {
     padding: 16px;
     flex: 1;

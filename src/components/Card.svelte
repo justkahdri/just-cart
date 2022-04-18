@@ -1,19 +1,34 @@
 <script lang="ts">
-import PrimaryButton from "./PrimaryButton.svelte";
+  import cart from "@cart";
+  import type Product from "@model/product";
+  import PrimaryButton from "./PrimaryButton.svelte";
 
+  export let stamp: Product;
+  const { image, title, description, id } = stamp;
 
-  export let image: string;
-  export let title: string;
-  export let description: string;
+  const addThisProduct = () => {
+    cart.addProduct(stamp.getPricing());
+  };
+
+  const removeThisProduct = () => {
+    cart.removeProduct(stamp.getPricing());
+  };
 </script>
 
 <article class="card">
   <img src={image} alt={description} />
-  <div>
+  <div class="content">
     <p class="title">{title}</p>
     <p class="description">{description}</p>
   </div>
-  <PrimaryButton>Agregar</PrimaryButton>
+  <div class="buttons">
+    {#if $cart.get(id)}
+    <PrimaryButton onClick={addThisProduct}>+</PrimaryButton>
+    <PrimaryButton onClick={removeThisProduct}>-</PrimaryButton>
+    {:else}
+    <PrimaryButton onClick={addThisProduct}>Agregar</PrimaryButton>
+    {/if}
+  </div>
 </article>
 
 <style>
@@ -30,8 +45,11 @@ import PrimaryButton from "./PrimaryButton.svelte";
 
   .card > div {
     display: flex;
-    flex-direction: column;
     gap: 6px;
+  }
+
+  .card > .content {
+    flex-direction: column;
     height: 100%;
   }
 

@@ -1,8 +1,9 @@
 <script lang="ts">
   export let shadow = "none";
+  export let onClick: MouseEventHandler;
 </script>
 
-<button class="btn" style:box-shadow={shadow}>
+<button class="btn" style:box-shadow={shadow} on:click={onClick}>
   <slot />
 </button>
 
@@ -17,5 +18,6 @@
     font-weight: 500;
     cursor: pointer;
     padding: 0 16px;
+    flex: 1;
   }
 </style>
