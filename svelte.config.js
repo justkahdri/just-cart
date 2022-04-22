@@ -13,8 +13,7 @@ const config = {
 				alias: {
           "@components": resolve("./src/components"),
           "@model": resolve("./src/model"),
-          "@utils": resolve("./src/utils"),
-          "@cart": resolve("./src/stores/cart")
+          "@utils": resolve("./src/utils")
 				}
 			}
     }

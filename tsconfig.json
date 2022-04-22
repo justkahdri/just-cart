@@ -7,7 +7,6 @@
     "paths": {
       "@components": ["src/components"],
       "@components/*": ["src/components/*"],
-      "@cart": ["src/stores/cart"],
       "@model": ["src/model"],
       "@model/*": ["src/model/*"],
       "@utils": ["src/utils"],
