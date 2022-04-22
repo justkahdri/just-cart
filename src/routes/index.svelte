@@ -19,19 +19,12 @@
 </script>
 
 <script lang="ts">
-  import cart from "@cart";
+  import {cart, total} from "@cart";
   import Product from "@model/product";
   import Card from "@components/Card.svelte";
   import PrimaryButton from "@components/PrimaryButton.svelte";
 
   export let products: StampT[] = [];
-
-  $: getTotal = () => {
-    const total = Array.from($cart.values())
-      .reduce((total, product) => product.getProductTotal() + total, 0);
-
-    return total;
-  };
 </script>
 
 <section>
@@ -41,7 +34,7 @@
 </section>
 <aside>
   <PrimaryButton shadow="0 0 10px rgba(0,0,0,0.5)" onClick={() => console.log($cart)}>
-    {$cart.size} {$cart.size === 1 ? "producto" : "productos"} (total: ${getTotal()})
+    {$cart.size} {$cart.size === 1 ? "producto" : "productos"} (total: ${$total})
   </PrimaryButton>
 </aside>
 

@@ -1,10 +1,10 @@
-import { writable } from "svelte/store";
+import { writable, derived } from "svelte/store";
 
 export function createCart() {
   const cart: CartWritable = writable(new Map());
 
   const addProduct = (newProduct: ProductT) => {
-    cart.update(products => {
+    cart.update((products) => {
       const { id, price } = newProduct;
       const productInCart = products.get(id);
       products.set(id, new CartProduct(price, productInCart ? productInCart.quantity + 1 : 1));
@@ -13,8 +13,8 @@ export function createCart() {
     });
   };
 
-  function removeProduct(product: ProductT) {
-    cart.update(products => {
+  const removeProduct = (product: ProductT) =>{
+    cart.update((products) => {
       const productInCart = products.get(product.id);
 
       if (!productInCart) {
@@ -29,23 +29,18 @@ export function createCart() {
 
       return new Map(products.set(product.id, productUpdated));
     });
-  }
+  };
 
-  // function getTotal() {
-  //   let total = 0;
-  //   cart.subscribe((products) => {
-  //     total = Array.from(products.values())
-  //     .reduce((total, product) => product.getProductTotal() + total, 0);
-  //   });
-
-  //   return total;
-  // }
+  const total = derived(cart, ($cart) => Array.from($cart.values())
+    .reduce((total, product) => product.getProductTotal() + total, 0));
 
   return {
-    subscribe: cart.subscribe,
-    // getTotal,
-    addProduct,
-    removeProduct
+    cart: {
+      subscribe: cart.subscribe,
+      addProduct,
+      removeProduct
+    },
+    total
   };
 
 }
@@ -64,4 +59,4 @@ class CartProduct {
   }
 }
 
-export default createCart();
+export const { cart, total } = createCart();

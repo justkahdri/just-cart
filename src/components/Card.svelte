@@ -1,5 +1,5 @@
 <script lang="ts">
-  import cart from "@cart";
+  import {cart} from "@cart";
   import type Product from "@model/product";
   import PrimaryButton from "./PrimaryButton.svelte";
 
