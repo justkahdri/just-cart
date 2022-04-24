@@ -29,6 +29,9 @@ module.exports = {
     "array-element-newline": [2, "consistent"],
     "object-curly-spacing": [2, "always"],
     "no-multi-spaces": 2,
-    "no-trailing-spaces": 2
+    "no-trailing-spaces": 2,
+    "arrow-parens": [2, "always"],
+    "arrow-body-style": [2, "as-needed"],
+    "space-infix-ops": 2
   }
 };
