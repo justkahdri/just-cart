@@ -19,7 +19,7 @@
 </script>
 
 <script lang="ts">
-  import {cart, total} from "@justkahdri/cart-store";
+  import { cart, total } from "@justkahdri/cart-store";
   import Product from "@model/product";
   import Card from "@components/Card.svelte";
   import PrimaryButton from "@components/PrimaryButton.svelte";
